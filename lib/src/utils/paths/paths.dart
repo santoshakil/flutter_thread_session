@@ -1,5 +1,6 @@
 import 'dart:io' show Directory;
 
+import 'package:flutter/material.dart' show WidgetsFlutterBinding;
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart'
     show getApplicationDocumentsDirectory;
@@ -11,6 +12,7 @@ late Directory appDBDir;
 late Directory appBackupDir;
 
 Future<void> initDir() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final _dir = await getApplicationDocumentsDirectory();
   appDir = Directory(join(_dir.path, '.${appName.toLowerCase()}'));
   appDBDir = Directory(join(appDir.path, 'db'));

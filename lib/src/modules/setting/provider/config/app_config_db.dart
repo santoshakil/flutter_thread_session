@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:isar/isar.dart' show Isar;
 
 import '../../../../utils/paths/paths.dart' show appDBDir;
@@ -12,4 +13,5 @@ AppConfig get appConfig =>
 Future<void> openAppConfigDB() async => appConfigDB = await Isar.open(
       schemas: [AppConfigSchema],
       directory: appDBDir.path,
+      inspector: !kReleaseMode,
     );
