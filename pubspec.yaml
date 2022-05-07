@@ -16,6 +16,7 @@ dependencies:
   flutter_riverpod: ^1.0.3
   isar: ^2.5.0
   isar_flutter_libs: ^2.5.0
+  logger: ^1.1.0
   path_provider: ^2.0.9
 
 dev_dependencies:
