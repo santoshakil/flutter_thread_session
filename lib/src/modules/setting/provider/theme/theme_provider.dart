@@ -6,7 +6,7 @@ import '../../model/setting_model.dart'
 import '../config/app_config_db.dart' show appConfig, appConfigDB;
 
 final themeConfigStream =
-    StreamProvider((ref) => appConfigDB.appConfigs.watchObject(0));
+    StreamProvider((ref) => appConfigDB.appConfigs.watchObjectLazy(0));
 
 final themeProvider = Provider((ref) {
   ref.watch(themeConfigStream);
