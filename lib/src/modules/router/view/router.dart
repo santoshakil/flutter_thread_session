@@ -13,6 +13,7 @@ class AppRouter extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     t = AppLocalizations.of(context);
+    // TODO: Check if Auth is needed
     return const HomeView();
   }
 }
