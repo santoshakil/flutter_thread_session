@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart'
     show getApplicationDocumentsDirectory;
 
 import '../../configs/configs.dart' show appName;
+import '../helpers/other/other_helper.dart' show log;
 
 late Directory appDir;
 late Directory appDBDir;
@@ -20,4 +21,5 @@ Future<void> initDir() async {
   if (!appDir.existsSync()) appDir.createSync(recursive: true);
   if (!appDBDir.existsSync()) appDBDir.createSync(recursive: true);
   if (!appBackupDir.existsSync()) appBackupDir.createSync(recursive: true);
+  log.i('App Directory: ${appDir.path}');
 }
