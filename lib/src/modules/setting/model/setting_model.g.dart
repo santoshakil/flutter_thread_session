@@ -56,20 +56,20 @@ void _appConfigSerializeNative(
     AdapterAlloc alloc) {
   var dynamicSize = 0;
   final value0 = object.firstRun;
-  final _firstRun = value0;
+  final firstRun = value0;
   final value1 = object.hashCode;
-  final _hashCode = value1;
+  final hashCode = value1;
   final value2 = object.themeIndex;
-  final _themeIndex = value2;
+  final themeIndex = value2;
   final size = staticSize + dynamicSize;
 
   rawObj.buffer = alloc(size);
   rawObj.buffer_length = size;
   final buffer = IsarNative.bufAsBytes(rawObj.buffer, size);
   final writer = IsarBinaryWriter(buffer, staticSize);
-  writer.writeBool(offsets[0], _firstRun);
-  writer.writeLong(offsets[1], _hashCode);
-  writer.writeLong(offsets[2], _themeIndex);
+  writer.writeBool(offsets[0], firstRun);
+  writer.writeLong(offsets[1], hashCode);
+  writer.writeLong(offsets[2], themeIndex);
 }
 
 AppConfig _appConfigDeserializeNative(IsarCollection<AppConfig> collection,

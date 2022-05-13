@@ -14,8 +14,8 @@ late Directory appBackupDir;
 
 Future<void> initDir() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final _dir = await getApplicationDocumentsDirectory();
-  appDir = Directory(join(_dir.path, '.${appName.toLowerCase()}'));
+  final dir = await getApplicationDocumentsDirectory();
+  appDir = Directory(join(dir.path, '.${appName.toLowerCase()}'));
   appDBDir = Directory(join(appDir.path, 'db'));
   appBackupDir = Directory(join(appDir.path, 'backup'));
   if (!appDir.existsSync()) appDir.createSync(recursive: true);

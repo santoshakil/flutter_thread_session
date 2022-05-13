@@ -17,11 +17,11 @@ class SettingView extends StatelessWidget {
         child: Consumer(
           builder: (_, ref, __) {
             ref.watch(themeProvider);
-            final _theme = appConfig.themeIndex;
+            final theme = appConfig.themeIndex;
             return ElevatedButton(
               style: roundedButtonStyle,
-              onPressed: () => changeTheme(_theme == 0 ? 1 : 0),
-              child: _theme == 1
+              onPressed: () => changeTheme(theme == 0 ? 1 : 0),
+              child: theme == 1
                   ? const Text('Change Theme to Light')
                   : const Text('Change Theme to Dark'),
             );

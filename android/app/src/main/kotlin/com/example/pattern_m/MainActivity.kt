@@ -1,4 +1,4 @@
-package com.databytesoft.pattern_m
+package com.example.pattern_m
 
 import io.flutter.embedding.android.FlutterActivity
 
