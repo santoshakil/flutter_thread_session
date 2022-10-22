@@ -9,26 +9,21 @@ part 'setting_model.g.dart';
 
 @Collection()
 class AppConfig {
-  final int id;
+  final Id id = 0;
   final bool firstRun;
   final int themeIndex;
 
-  AppConfig({
-    required this.id,
-    this.firstRun = true,
-    this.themeIndex = 0, // SelectedTheme.light.index,
-  });
+  AppConfig({this.firstRun = true, this.themeIndex = 0});
 
   Map<String, dynamic> toMap() => {
-        'id': id,
-        'firstRun': firstRun,
         'themeIndex': themeIndex,
+        'firstRun': firstRun,
+        'id': id,
       };
 
   factory AppConfig.fromMap(Map<String, dynamic> map) => AppConfig(
-        id: map['id'] as int,
-        firstRun: map['firstRun'] ?? false,
         themeIndex: map['themeIndex']?.toInt() ?? 0,
+        firstRun: map['firstRun'] ?? false,
       );
 
   String toJson() => json.encode(toMap());
@@ -37,8 +32,7 @@ class AppConfig {
       AppConfig.fromMap(json.decode(source));
 
   @override
-  String toString() =>
-      'AppConfig(id: $id, firstRun: $firstRun, theme: ${SelectedTheme.values[themeIndex].name})';
+  String toString() => toJson();
 
   @override
   bool operator ==(Object other) {
@@ -46,20 +40,14 @@ class AppConfig {
     return other is AppConfig && other.id == id;
   }
 
+  @Ignore()
   @override
   int get hashCode => id.hashCode;
 
-  AppConfig copyWith({
-    int? id,
-    bool? firstRun,
-    int? themeIndex,
-  }) {
-    return AppConfig(
-      id: id ?? this.id,
-      firstRun: firstRun ?? this.firstRun,
-      themeIndex: themeIndex ?? this.themeIndex,
-    );
-  }
+  AppConfig copyWith({int? id, bool? firstRun, int? themeIndex}) => AppConfig(
+        themeIndex: themeIndex ?? this.themeIndex,
+        firstRun: firstRun ?? this.firstRun,
+      );
 }
 
 extension AppConfigExtension on AppConfig {

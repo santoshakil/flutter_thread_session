@@ -7,11 +7,10 @@ import '../../model/setting_model.dart'
 
 late final Isar appConfigDB;
 
-AppConfig get appConfig =>
-    appConfigDB.appConfigs.getSync(0) ?? AppConfig(id: 0);
+AppConfig get appConfig => appConfigDB.appConfigs.getSync(0) ?? AppConfig();
 
 Future<void> openAppConfigDB() async => appConfigDB = await Isar.open(
-      schemas: [AppConfigSchema],
-      directory: appDBDir.path,
+      [AppConfigSchema],
       inspector: !kReleaseMode,
+      directory: appDBDir.path,
     );

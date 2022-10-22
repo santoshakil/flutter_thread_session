@@ -6,199 +6,174 @@ part of 'setting_model.dart';
 // IsarCollectionGenerator
 // **************************************************************************
 
-// ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, unused_local_variable
+// coverage:ignore-file
+// ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
 
 extension GetAppConfigCollection on Isar {
-  IsarCollection<AppConfig> get appConfigs => getCollection();
+  IsarCollection<AppConfig> get appConfigs => this.collection();
 }
 
 const AppConfigSchema = CollectionSchema(
-  name: 'AppConfig',
-  schema:
-      '{"name":"AppConfig","idName":"id","properties":[{"name":"firstRun","type":"Bool"},{"name":"hashCode","type":"Long"},{"name":"themeIndex","type":"Long"}],"indexes":[],"links":[]}',
-  idName: 'id',
-  propertyIds: {'firstRun': 0, 'hashCode': 1, 'themeIndex': 2},
-  listProperties: {},
-  indexIds: {},
-  indexValueTypes: {},
-  linkIds: {},
-  backlinkLinkNames: {},
+  name: r'AppConfig',
+  id: -7085420701237142207,
+  properties: {
+    r'firstRun': PropertySchema(
+      id: 0,
+      name: r'firstRun',
+      type: IsarType.bool,
+    ),
+    r'themeIndex': PropertySchema(
+      id: 1,
+      name: r'themeIndex',
+      type: IsarType.long,
+    )
+  },
+  estimateSize: _appConfigEstimateSize,
+  serialize: _appConfigSerialize,
+  deserialize: _appConfigDeserialize,
+  deserializeProp: _appConfigDeserializeProp,
+  idName: r'id',
+  indexes: {},
+  links: {},
+  embeddedSchemas: {},
   getId: _appConfigGetId,
   getLinks: _appConfigGetLinks,
-  attachLinks: _appConfigAttachLinks,
-  serializeNative: _appConfigSerializeNative,
-  deserializeNative: _appConfigDeserializeNative,
-  deserializePropNative: _appConfigDeserializePropNative,
-  serializeWeb: _appConfigSerializeWeb,
-  deserializeWeb: _appConfigDeserializeWeb,
-  deserializePropWeb: _appConfigDeserializePropWeb,
-  version: 3,
+  attach: _appConfigAttach,
+  version: '3.0.2',
 );
 
-int? _appConfigGetId(AppConfig object) {
-  if (object.id == Isar.autoIncrement) {
-    return null;
-  } else {
-    return object.id;
+int _appConfigEstimateSize(
+  AppConfig object,
+  List<int> offsets,
+  Map<Type, List<int>> allOffsets,
+) {
+  var bytesCount = offsets.last;
+  return bytesCount;
+}
+
+void _appConfigSerialize(
+  AppConfig object,
+  IsarWriter writer,
+  List<int> offsets,
+  Map<Type, List<int>> allOffsets,
+) {
+  writer.writeBool(offsets[0], object.firstRun);
+  writer.writeLong(offsets[1], object.themeIndex);
+}
+
+AppConfig _appConfigDeserialize(
+  Id id,
+  IsarReader reader,
+  List<int> offsets,
+  Map<Type, List<int>> allOffsets,
+) {
+  final object = AppConfig(
+    firstRun: reader.readBoolOrNull(offsets[0]) ?? true,
+    themeIndex: reader.readLongOrNull(offsets[1]) ?? 0,
+  );
+  return object;
+}
+
+P _appConfigDeserializeProp<P>(
+  IsarReader reader,
+  int propertyId,
+  int offset,
+  Map<Type, List<int>> allOffsets,
+) {
+  switch (propertyId) {
+    case 0:
+      return (reader.readBoolOrNull(offset) ?? true) as P;
+    case 1:
+      return (reader.readLongOrNull(offset) ?? 0) as P;
+    default:
+      throw IsarError('Unknown property with id $propertyId');
   }
 }
 
-List<IsarLinkBase> _appConfigGetLinks(AppConfig object) {
+Id _appConfigGetId(AppConfig object) {
+  return object.id;
+}
+
+List<IsarLinkBase<dynamic>> _appConfigGetLinks(AppConfig object) {
   return [];
 }
 
-void _appConfigSerializeNative(
-    IsarCollection<AppConfig> collection,
-    IsarRawObject rawObj,
-    AppConfig object,
-    int staticSize,
-    List<int> offsets,
-    AdapterAlloc alloc) {
-  var dynamicSize = 0;
-  final value0 = object.firstRun;
-  final firstRun = value0;
-  final value1 = object.hashCode;
-  final hashCode = value1;
-  final value2 = object.themeIndex;
-  final themeIndex = value2;
-  final size = staticSize + dynamicSize;
-
-  rawObj.buffer = alloc(size);
-  rawObj.buffer_length = size;
-  final buffer = IsarNative.bufAsBytes(rawObj.buffer, size);
-  final writer = IsarBinaryWriter(buffer, staticSize);
-  writer.writeBool(offsets[0], firstRun);
-  writer.writeLong(offsets[1], hashCode);
-  writer.writeLong(offsets[2], themeIndex);
-}
-
-AppConfig _appConfigDeserializeNative(IsarCollection<AppConfig> collection,
-    int id, IsarBinaryReader reader, List<int> offsets) {
-  final object = AppConfig(
-    firstRun: reader.readBool(offsets[0]),
-    id: id,
-    themeIndex: reader.readLong(offsets[2]),
-  );
-  return object;
-}
-
-P _appConfigDeserializePropNative<P>(
-    int id, IsarBinaryReader reader, int propertyIndex, int offset) {
-  switch (propertyIndex) {
-    case -1:
-      return id as P;
-    case 0:
-      return (reader.readBool(offset)) as P;
-    case 1:
-      return (reader.readLong(offset)) as P;
-    case 2:
-      return (reader.readLong(offset)) as P;
-    default:
-      throw 'Illegal propertyIndex';
-  }
-}
-
-dynamic _appConfigSerializeWeb(
-    IsarCollection<AppConfig> collection, AppConfig object) {
-  final jsObj = IsarNative.newJsObject();
-  IsarNative.jsObjectSet(jsObj, 'firstRun', object.firstRun);
-  IsarNative.jsObjectSet(jsObj, 'hashCode', object.hashCode);
-  IsarNative.jsObjectSet(jsObj, 'id', object.id);
-  IsarNative.jsObjectSet(jsObj, 'themeIndex', object.themeIndex);
-  return jsObj;
-}
-
-AppConfig _appConfigDeserializeWeb(
-    IsarCollection<AppConfig> collection, dynamic jsObj) {
-  final object = AppConfig(
-    firstRun: IsarNative.jsObjectGet(jsObj, 'firstRun') ?? false,
-    id: IsarNative.jsObjectGet(jsObj, 'id') ?? double.negativeInfinity,
-    themeIndex:
-        IsarNative.jsObjectGet(jsObj, 'themeIndex') ?? double.negativeInfinity,
-  );
-  return object;
-}
-
-P _appConfigDeserializePropWeb<P>(Object jsObj, String propertyName) {
-  switch (propertyName) {
-    case 'firstRun':
-      return (IsarNative.jsObjectGet(jsObj, 'firstRun') ?? false) as P;
-    case 'hashCode':
-      return (IsarNative.jsObjectGet(jsObj, 'hashCode') ??
-          double.negativeInfinity) as P;
-    case 'id':
-      return (IsarNative.jsObjectGet(jsObj, 'id') ?? double.negativeInfinity)
-          as P;
-    case 'themeIndex':
-      return (IsarNative.jsObjectGet(jsObj, 'themeIndex') ??
-          double.negativeInfinity) as P;
-    default:
-      throw 'Illegal propertyName';
-  }
-}
-
-void _appConfigAttachLinks(IsarCollection col, int id, AppConfig object) {}
+void _appConfigAttach(IsarCollection<dynamic> col, Id id, AppConfig object) {}
 
 extension AppConfigQueryWhereSort
     on QueryBuilder<AppConfig, AppConfig, QWhere> {
   QueryBuilder<AppConfig, AppConfig, QAfterWhere> anyId() {
-    return addWhereClauseInternal(const IdWhereClause.any());
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(const IdWhereClause.any());
+    });
   }
 }
 
 extension AppConfigQueryWhere
     on QueryBuilder<AppConfig, AppConfig, QWhereClause> {
-  QueryBuilder<AppConfig, AppConfig, QAfterWhereClause> idEqualTo(int id) {
-    return addWhereClauseInternal(IdWhereClause.between(
-      lower: id,
-      includeLower: true,
-      upper: id,
-      includeUpper: true,
-    ));
+  QueryBuilder<AppConfig, AppConfig, QAfterWhereClause> idEqualTo(Id id) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IdWhereClause.between(
+        lower: id,
+        upper: id,
+      ));
+    });
   }
 
-  QueryBuilder<AppConfig, AppConfig, QAfterWhereClause> idNotEqualTo(int id) {
-    if (whereSortInternal == Sort.asc) {
-      return addWhereClauseInternal(
-        IdWhereClause.lessThan(upper: id, includeUpper: false),
-      ).addWhereClauseInternal(
-        IdWhereClause.greaterThan(lower: id, includeLower: false),
-      );
-    } else {
-      return addWhereClauseInternal(
-        IdWhereClause.greaterThan(lower: id, includeLower: false),
-      ).addWhereClauseInternal(
-        IdWhereClause.lessThan(upper: id, includeUpper: false),
-      );
-    }
+  QueryBuilder<AppConfig, AppConfig, QAfterWhereClause> idNotEqualTo(Id id) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
+            )
+            .addWhereClause(
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
+            );
+      } else {
+        return query
+            .addWhereClause(
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
+            )
+            .addWhereClause(
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
+            );
+      }
+    });
   }
 
-  QueryBuilder<AppConfig, AppConfig, QAfterWhereClause> idGreaterThan(int id,
+  QueryBuilder<AppConfig, AppConfig, QAfterWhereClause> idGreaterThan(Id id,
       {bool include = false}) {
-    return addWhereClauseInternal(
-      IdWhereClause.greaterThan(lower: id, includeLower: include),
-    );
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        IdWhereClause.greaterThan(lower: id, includeLower: include),
+      );
+    });
   }
 
-  QueryBuilder<AppConfig, AppConfig, QAfterWhereClause> idLessThan(int id,
+  QueryBuilder<AppConfig, AppConfig, QAfterWhereClause> idLessThan(Id id,
       {bool include = false}) {
-    return addWhereClauseInternal(
-      IdWhereClause.lessThan(upper: id, includeUpper: include),
-    );
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        IdWhereClause.lessThan(upper: id, includeUpper: include),
+      );
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterWhereClause> idBetween(
-    int lowerId,
-    int upperId, {
+    Id lowerId,
+    Id upperId, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
-    return addWhereClauseInternal(IdWhereClause.between(
-      lower: lowerId,
-      includeLower: includeLower,
-      upper: upperId,
-      includeUpper: includeUpper,
-    ));
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IdWhereClause.between(
+        lower: lowerId,
+        includeLower: includeLower,
+        upper: upperId,
+        includeUpper: includeUpper,
+      ));
+    });
   }
 }
 
@@ -206,116 +181,75 @@ extension AppConfigQueryFilter
     on QueryBuilder<AppConfig, AppConfig, QFilterCondition> {
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> firstRunEqualTo(
       bool value) {
-    return addFilterConditionInternal(FilterCondition(
-      type: ConditionType.eq,
-      property: 'firstRun',
-      value: value,
-    ));
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> hashCodeEqualTo(
-      int value) {
-    return addFilterConditionInternal(FilterCondition(
-      type: ConditionType.eq,
-      property: 'hashCode',
-      value: value,
-    ));
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> hashCodeGreaterThan(
-    int value, {
-    bool include = false,
-  }) {
-    return addFilterConditionInternal(FilterCondition(
-      type: ConditionType.gt,
-      include: include,
-      property: 'hashCode',
-      value: value,
-    ));
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> hashCodeLessThan(
-    int value, {
-    bool include = false,
-  }) {
-    return addFilterConditionInternal(FilterCondition(
-      type: ConditionType.lt,
-      include: include,
-      property: 'hashCode',
-      value: value,
-    ));
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> hashCodeBetween(
-    int lower,
-    int upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return addFilterConditionInternal(FilterCondition.between(
-      property: 'hashCode',
-      lower: lower,
-      includeLower: includeLower,
-      upper: upper,
-      includeUpper: includeUpper,
-    ));
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'firstRun',
+        value: value,
+      ));
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> idEqualTo(
-      int value) {
-    return addFilterConditionInternal(FilterCondition(
-      type: ConditionType.eq,
-      property: 'id',
-      value: value,
-    ));
+      Id value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'id',
+        value: value,
+      ));
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> idGreaterThan(
-    int value, {
+    Id value, {
     bool include = false,
   }) {
-    return addFilterConditionInternal(FilterCondition(
-      type: ConditionType.gt,
-      include: include,
-      property: 'id',
-      value: value,
-    ));
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> idLessThan(
-    int value, {
+    Id value, {
     bool include = false,
   }) {
-    return addFilterConditionInternal(FilterCondition(
-      type: ConditionType.lt,
-      include: include,
-      property: 'id',
-      value: value,
-    ));
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> idBetween(
-    int lower,
-    int upper, {
+    Id lower,
+    Id upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
-    return addFilterConditionInternal(FilterCondition.between(
-      property: 'id',
-      lower: lower,
-      includeLower: includeLower,
-      upper: upper,
-      includeUpper: includeUpper,
-    ));
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'id',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> themeIndexEqualTo(
       int value) {
-    return addFilterConditionInternal(FilterCondition(
-      type: ConditionType.eq,
-      property: 'themeIndex',
-      value: value,
-    ));
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'themeIndex',
+        value: value,
+      ));
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
@@ -323,24 +257,26 @@ extension AppConfigQueryFilter
     int value, {
     bool include = false,
   }) {
-    return addFilterConditionInternal(FilterCondition(
-      type: ConditionType.gt,
-      include: include,
-      property: 'themeIndex',
-      value: value,
-    ));
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'themeIndex',
+        value: value,
+      ));
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> themeIndexLessThan(
     int value, {
     bool include = false,
   }) {
-    return addFilterConditionInternal(FilterCondition(
-      type: ConditionType.lt,
-      include: include,
-      property: 'themeIndex',
-      value: value,
-    ));
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'themeIndex',
+        value: value,
+      ));
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> themeIndexBetween(
@@ -349,123 +285,121 @@ extension AppConfigQueryFilter
     bool includeLower = true,
     bool includeUpper = true,
   }) {
-    return addFilterConditionInternal(FilterCondition.between(
-      property: 'themeIndex',
-      lower: lower,
-      includeLower: includeLower,
-      upper: upper,
-      includeUpper: includeUpper,
-    ));
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'themeIndex',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
   }
 }
+
+extension AppConfigQueryObject
+    on QueryBuilder<AppConfig, AppConfig, QFilterCondition> {}
 
 extension AppConfigQueryLinks
     on QueryBuilder<AppConfig, AppConfig, QFilterCondition> {}
 
-extension AppConfigQueryWhereSortBy
-    on QueryBuilder<AppConfig, AppConfig, QSortBy> {
+extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByFirstRun() {
-    return addSortByInternal('firstRun', Sort.asc);
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'firstRun', Sort.asc);
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByFirstRunDesc() {
-    return addSortByInternal('firstRun', Sort.desc);
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByHashCode() {
-    return addSortByInternal('hashCode', Sort.asc);
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByHashCodeDesc() {
-    return addSortByInternal('hashCode', Sort.desc);
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortById() {
-    return addSortByInternal('id', Sort.asc);
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByIdDesc() {
-    return addSortByInternal('id', Sort.desc);
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'firstRun', Sort.desc);
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByThemeIndex() {
-    return addSortByInternal('themeIndex', Sort.asc);
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeIndex', Sort.asc);
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByThemeIndexDesc() {
-    return addSortByInternal('themeIndex', Sort.desc);
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeIndex', Sort.desc);
+    });
   }
 }
 
-extension AppConfigQueryWhereSortThenBy
+extension AppConfigQuerySortThenBy
     on QueryBuilder<AppConfig, AppConfig, QSortThenBy> {
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByFirstRun() {
-    return addSortByInternal('firstRun', Sort.asc);
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'firstRun', Sort.asc);
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByFirstRunDesc() {
-    return addSortByInternal('firstRun', Sort.desc);
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByHashCode() {
-    return addSortByInternal('hashCode', Sort.asc);
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByHashCodeDesc() {
-    return addSortByInternal('hashCode', Sort.desc);
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'firstRun', Sort.desc);
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenById() {
-    return addSortByInternal('id', Sort.asc);
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.asc);
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByIdDesc() {
-    return addSortByInternal('id', Sort.desc);
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.desc);
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByThemeIndex() {
-    return addSortByInternal('themeIndex', Sort.asc);
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeIndex', Sort.asc);
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByThemeIndexDesc() {
-    return addSortByInternal('themeIndex', Sort.desc);
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeIndex', Sort.desc);
+    });
   }
 }
 
 extension AppConfigQueryWhereDistinct
     on QueryBuilder<AppConfig, AppConfig, QDistinct> {
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByFirstRun() {
-    return addDistinctByInternal('firstRun');
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByHashCode() {
-    return addDistinctByInternal('hashCode');
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctById() {
-    return addDistinctByInternal('id');
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'firstRun');
+    });
   }
 
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByThemeIndex() {
-    return addDistinctByInternal('themeIndex');
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'themeIndex');
+    });
   }
 }
 
 extension AppConfigQueryProperty
     on QueryBuilder<AppConfig, AppConfig, QQueryProperty> {
-  QueryBuilder<AppConfig, bool, QQueryOperations> firstRunProperty() {
-    return addPropertyNameInternal('firstRun');
-  }
-
-  QueryBuilder<AppConfig, int, QQueryOperations> hashCodeProperty() {
-    return addPropertyNameInternal('hashCode');
-  }
-
   QueryBuilder<AppConfig, int, QQueryOperations> idProperty() {
-    return addPropertyNameInternal('id');
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'id');
+    });
+  }
+
+  QueryBuilder<AppConfig, bool, QQueryOperations> firstRunProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'firstRun');
+    });
   }
 
   QueryBuilder<AppConfig, int, QQueryOperations> themeIndexProperty() {
-    return addPropertyNameInternal('themeIndex');
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'themeIndex');
+    });
   }
 }
