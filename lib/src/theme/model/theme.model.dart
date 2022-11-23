@@ -5,4 +5,4 @@ import '../themes/light/light.theme.dart';
 
 part 'theme.model.ext.dart';
 
-enum SelectedTheme { light, dark }
+enum ThemeProfile { light, dark }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../theme/provider/theme.provider.dart';
 import '../../../theme/themes/themes.dart';
-import '../provider/config/app_config_db.dart';
-import '../provider/theme/theme_db.dart';
-import '../provider/theme/theme_provider.dart';
 
 class SettingView extends StatelessWidget {
   const SettingView({Key? key}) : super(key: key);
@@ -16,12 +14,11 @@ class SettingView extends StatelessWidget {
       body: Center(
         child: Consumer(
           builder: (_, ref, __) {
-            ref.watch(themeProvider);
-            final theme = appConfig.themeIndex;
+            final notifier = ref.watch(themeProvider.notifier);
             return ElevatedButton(
               style: roundedButtonStyle,
-              onPressed: () => changeTheme(theme == 0 ? 1 : 0),
-              child: theme == 1
+              onPressed: () => notifier.toggleTheme(),
+              child: notifier.theme.index == 1
                   ? const Text('Change Theme to Light')
                   : const Text('Change Theme to Dark'),
             );

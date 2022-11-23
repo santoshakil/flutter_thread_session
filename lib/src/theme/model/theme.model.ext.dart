@@ -1,12 +1,15 @@
 part of 'theme.model.dart';
 
-extension SelectedThemeExtension on SelectedTheme {
+extension ThemeProfileExtension on ThemeProfile {
   ThemeData get theme {
     switch (this) {
-      case SelectedTheme.light:
+      case ThemeProfile.light:
         return lightTheme;
-      case SelectedTheme.dark:
+      case ThemeProfile.dark:
         return darkTheme;
     }
   }
+
+  ThemeProfile get toggled =>
+      this == ThemeProfile.light ? ThemeProfile.dark : ThemeProfile.light;
 }

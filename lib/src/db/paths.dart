@@ -8,18 +8,23 @@ import 'package:path_provider/path_provider.dart'
 import '../constants/constants.dart' show appName;
 import '../utils/log/log.dart' show log;
 
-late Directory appDir;
-late Directory appDBDir;
-late Directory appBackupDir;
+final appDir = AppDir();
 
 Future<void> initDir() async {
   WidgetsFlutterBinding.ensureInitialized();
   final dir = await getApplicationDocumentsDirectory();
-  appDir = Directory(join(dir.path, '.${appName.toLowerCase()}'));
-  appDBDir = Directory(join(appDir.path, 'db'));
-  appBackupDir = Directory(join(appDir.path, 'backup'));
-  if (!appDir.existsSync()) appDir.createSync(recursive: true);
-  if (!appDBDir.existsSync()) appDBDir.createSync(recursive: true);
-  if (!appBackupDir.existsSync()) appBackupDir.createSync(recursive: true);
-  log.i('App Directory: ${appDir.path}');
+  appDir.root = Directory(join(dir.path, '.${appName.toLowerCase()}'));
+  appDir.db = Directory(join(appDir.root.path, 'db'));
+  appDir.backup = Directory(join(appDir.root.path, 'backup'));
+  if (!appDir.root.existsSync()) appDir.root.createSync(recursive: true);
+  if (!appDir.db.existsSync()) appDir.db.createSync(recursive: true);
+  if (!appDir.backup.existsSync()) appDir.backup.createSync(recursive: true);
+  log.i('App Directory: ${appDir.root.path}');
+}
+
+class AppDir {
+  late Directory backup;
+  late Directory root;
+  late Directory db;
+  AppDir();
 }
