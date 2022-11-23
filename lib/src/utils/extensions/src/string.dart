@@ -1,3 +1,5 @@
+part of '../extensions.dart';
+
 extension StringUtils on String {
   bool get isEmail => _emailRegularExpression.hasMatch(toLowerCase());
 

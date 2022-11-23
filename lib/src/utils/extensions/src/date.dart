@@ -1,4 +1,4 @@
-import 'package:intl/intl.dart' show DateFormat;
+part of '../extensions.dart';
 
 extension DateUtils on DateTime {
   static DateTime get tomorrow => DateTime.now().nextDay;

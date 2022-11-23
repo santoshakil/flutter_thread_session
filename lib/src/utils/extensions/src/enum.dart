@@ -1,3 +1,5 @@
+part of '../extensions.dart';
+
 abstract class Enum<T> {
   final T _value;
   T get value => _value;

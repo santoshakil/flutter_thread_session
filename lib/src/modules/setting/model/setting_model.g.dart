@@ -39,7 +39,7 @@ const AppConfigSchema = CollectionSchema(
   getId: _appConfigGetId,
   getLinks: _appConfigGetLinks,
   attach: _appConfigAttach,
-  version: '3.0.2',
+  version: '3.0.5',
 );
 
 int _appConfigEstimateSize(

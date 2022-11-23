@@ -4,10 +4,7 @@ import 'package:flutter/material.dart'
 import 'dark/dark_theme.dart' show darkTheme;
 import 'light/light_theme.dart' show lightTheme;
 
-enum SelectedTheme {
-  light,
-  dark,
-}
+enum SelectedTheme { light, dark }
 
 extension SelectedThemeExtension on SelectedTheme {
   ThemeData get theme {

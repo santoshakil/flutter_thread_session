@@ -1,3 +1,5 @@
+part of '../extensions.dart';
+
 extension ListUtils<T> on List<T> {
   List<List<T>> chunks(int chunkSize) {
     final chunks = <List<T>>[];
