@@ -3,7 +3,7 @@ import 'dart:convert' show json;
 import 'package:flutter/material.dart' show ThemeData;
 import 'package:isar/isar.dart';
 
-import '../../../utils/themes/themes.dart';
+import '../../../theme/model/theme.model.dart';
 
 part 'setting_model.g.dart';
 

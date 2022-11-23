@@ -2,12 +2,9 @@ import 'package:flutter/material.dart' show runApp;
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderScope;
 
 import 'src/app.dart' show MyApp;
-import 'src/modules/setting/provider/config/app_config_db.dart'
-    show openAppConfigDB;
-import 'src/utils/paths/paths.dart' show initDir;
+import 'src/db/isar.dart' show openDB;
 
 void main() async {
-  await initDir();
-  await openAppConfigDB();
+  await openDB();
   runApp(const ProviderScope(child: MyApp()));
 }

@@ -5,8 +5,8 @@ import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart'
     show getApplicationDocumentsDirectory;
 
-import '../../configs/configs.dart' show appName;
-import '../helpers/log/log.dart' show log;
+import '../constants/constants.dart' show appName;
+import '../utils/log/log.dart' show log;
 
 late Directory appDir;
 late Directory appDBDir;

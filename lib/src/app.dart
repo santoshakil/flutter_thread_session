@@ -7,6 +7,7 @@ import 'localization/loalization.dart'
     show localizationsDelegates, onGenerateTitle, supportedLocales;
 import 'modules/router/view/router.dart' show AppRouter;
 import 'modules/setting/provider/theme/theme_provider.dart' show themeProvider;
+import 'constants/constants.dart' show appName;
 
 class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
-      restorationScopeId: 'app',
+      restorationScopeId: appName,
       onGenerateTitle: onGenerateTitle,
       debugShowCheckedModeBanner: false,
       supportedLocales: supportedLocales,

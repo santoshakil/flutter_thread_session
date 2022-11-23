@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../localization/loalization.dart';
-import '../../../utils/helpers/routing/routing.dart';
-import '../../../utils/themes/themes.dart';
+import '../../../theme/themes/themes.dart';
+import '../../router/provider/route_provider.dart';
 import '../../setting/view/setting_view.dart';
 
 class HomeView extends StatelessWidget {
