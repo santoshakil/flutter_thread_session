@@ -20,7 +20,7 @@ class SettingView extends StatelessWidget {
               style: roundedButtonStyle,
               onPressed: () async =>
                   await ref.read(themeProvider.notifier).toggleTheme(),
-              child: theme == ThemeProfile.light
+              child: theme == ThemeProfile.dark
                   ? const Text('Change Theme to Light')
                   : const Text('Change Theme to Dark'),
             );
