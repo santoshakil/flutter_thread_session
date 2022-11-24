@@ -1,10 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pattern_m/src/db/isar.dart';
-import 'package:pattern_m/src/db/paths.dart';
-import 'package:pattern_m/src/modules/setting/model/setting.model.dart';
 
+import '../../db/isar.dart';
+import '../../db/paths.dart';
+import '../../modules/setting/model/setting.model.dart';
 import '../../modules/setting/provider/settings.provider.dart';
 import '../model/theme.model.dart';
 
@@ -18,7 +17,7 @@ class ThemeProvider extends Notifier<ThemeProfile> {
   ThemeProfile get theme => state;
   _Data get _data => _Data(ref.read(settingsProvider), state);
 
-  void changeTheme(ThemeProfile theme) async =>
+  Future<void> changeTheme(ThemeProfile theme) async =>
       await compute(_changeTheme, _data);
 
   void _changeTheme(_Data data) {
@@ -27,7 +26,7 @@ class ThemeProvider extends Notifier<ThemeProfile> {
     db.writeTxnSync(() => db.appSettings.putSync(data.setting));
   }
 
-  void toggleTheme() => changeTheme(state.toggled);
+  Future<void> toggleTheme() async => await changeTheme(state.toggled);
 }
 
 class _Data {
