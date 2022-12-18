@@ -16,12 +16,6 @@
       |-- database.dart
       |-- database.service.dart
       |-- database.provider.dart
-   |-- utils
-      |-- constants.dart
-      |-- functions
-         |-- shared.function1.dart
-         |-- shared.function2.dart
-         |-- shared.function3.dart
    |-- modules
       |-- module1
          |-- view
@@ -51,17 +45,22 @@
             |-- component2
                 |-- component2.dart
                 |-- component2.1.dart
-   |-- shared
-      |-- components
-         |-- components1
-            |-- components1.dart
-            |-- components1.1.dart
-         |-- components2
-            |-- components2.dart
-            |-- components2.1.dart
+   |-- components
+      |-- components1
+         |-- components1.dart
+         |-- components1.1.dart
+      |-- components2
+         |-- components2.dart
+         |-- components2.1.dart
    |-- services
       |-- service1.dart
       |-- service2.dart
+   |-- utils
+      |-- constants.dart
+      |-- functions
+         |-- shared.function1.dart
+         |-- shared.function2.dart
+         |-- shared.function3.dart
 |-- test
     |-- unit
         |-- module1
