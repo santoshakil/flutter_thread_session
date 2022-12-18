@@ -4,24 +4,36 @@
       |-- app_config
          |-- app.config.dart
          |-- app.config.model.dart
+         |-- app.config.model.ext.dart // extension for app.config.model.dart
          |-- app.config.provider.dart
       |-- theme
          |-- theme.dart
          |-- dark.theme.dart
          |-- light.theme.dart
-         |-- theme.model.dart
-         |-- theme.provider.dart
+         |-- xxxxx.theme.dart
          |-- custom.theme.dart
+         |-- theme.model.dart
+         |-- theme.model.ext.dart
+         |-- theme.provider.dart
    |-- database
       |-- database.dart
       |-- database.service.dart
       |-- database.provider.dart
+   |-- extensions
+      |-- date
+         |-- date.ext.dart
+      |-- string
+         |-- string.ext.dart
+      |-- xxxxx
+         |-- xxxxx.ext.dart
+      |-- extensions.dart
    |-- modules
       |-- module1
          |-- view
             |-- module1.view.dart
          |-- model
             |-- module1.model.dart
+            |-- module1.model.ext.dart
          |-- provider
             |-- module1.provider.dart
          |-- components
@@ -36,6 +48,7 @@
             |-- module2.view.dart
          |-- model
             |-- module2.model.dart
+            |-- module2.model.ext.dart
          |-- provider
             |-- module2.provider.dart
          |-- components
