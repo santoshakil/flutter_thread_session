@@ -1,93 +1,71 @@
-|-- lib
-   |-- main.dart
-   |-- config
-      |-- app_config
-         |-- app.config.dart
-         |-- app.config.model.dart
-         |-- app.config.model.ext.dart // extension for app.config.model.dart
-         |-- app.config.provider.dart
-      |-- theme
-         |-- theme.dart
-         |-- dark.theme.dart
-         |-- light.theme.dart
-         |-- xxxxx.theme.dart
-         |-- custom.theme.dart
-         |-- theme.model.dart
-         |-- theme.model.ext.dart
-         |-- theme.provider.dart
-   |-- database
-      |-- database.dart
-      |-- database.service.dart
-      |-- database.provider.dart
-   |-- extensions
-      |-- date
-         |-- date.ext.dart
-      |-- string
-         |-- string.ext.dart
-      |-- xxxxx
-         |-- xxxxx.ext.dart
-      |-- extensions.dart
-   |-- modules
-      |-- module1
-         |-- view
-            |-- module1.view.dart
-         |-- model
-            |-- module1.model.dart
-            |-- module1.model.ext.dart
-         |-- provider
-            |-- module1.provider.dart
-         |-- components
-            |-- component1
-                |-- component1.dart
-                |-- component1.1.dart
-            |-- component2
-                |-- component2.dart
-                |-- component2.1.dart
-      |-- module2
-         |-- view
-            |-- module2.view.dart
-         |-- model
-            |-- module2.model.dart
-            |-- module2.model.ext.dart
-         |-- provider
-            |-- module2.provider.dart
-         |-- components
-            |-- component1
-                |-- component1.dart
-                |-- component1.1.dart
-            |-- component2
-                |-- component2.dart
-                |-- component2.1.dart
-   |-- components
-      |-- components1
-         |-- components1.dart
-         |-- components1.1.dart
-      |-- components2
-         |-- components2.dart
-         |-- components2.1.dart
-   |-- services
-      |-- service1.dart
-      |-- service2.dart
-   |-- utils
-      |-- constants.dart
-      |-- functions
-         |-- shared.function1.dart
-         |-- shared.function2.dart
-         |-- shared.function3.dart
-|-- test
-    |-- unit
-        |-- module1
-            |-- module1.test.dart
-        |-- module2
-            |-- module2.test.dart
-    |-- integration
-        |-- module1
-            |-- module1.test.dart
-        |-- module2
-            |-- module2.test.dart
-    |-- widget
-        |-- module1
-            |-- module1.test.dart
-        |-- module2
-            |-- module2.test.dart
-            
+lib
+├── main.dart
+├── config
+│   ├── app_config
+│   │   ├── app_config.dart
+│   │   ├── app_config_model.dart
+│   │   ├── app_config_model_ext.dart
+│   │   └── app_config_provider.dart
+│   └── theme
+│       ├── theme.dart
+│       ├── dark_theme.dart
+│       ├── light_theme.dart
+│       ├── xxxxx_theme.dart
+│       ├── custom_theme.dart
+│       ├── theme_model.dart
+│       ├── theme_model_ext.dart
+│       └── theme_provider.dart
+├── database
+│   ├── database.dart
+│   ├── database_service.dart
+│   └── database_provider.dart
+├── extensions
+│   ├── date
+│   │   └── date_ext.dart
+│   ├── string
+│   │   └── string_ext.dart
+│   ├── ...
+│   └── extensions.dart
+├── modules
+│   ├── module1
+│   │   ├── view
+│   │   │   └── module1_view.dart
+│   │   ├── model
+│   │   │   ├── module1_model.dart
+│   │   │   └── module1_model_ext.dart
+│   │   ├── provider
+│   │   │   └── module1_provider.dart
+│   │   └── components
+│   │       ├── component1
+│   │       │   ├── component1.dart
+│   │       │   ├── component1.1.dart
+│   │       │   └── ...
+│   │       └── ...
+│   └── ...
+├── components
+│   ├── component1
+│   │   ├── component1.dart
+│   │   ├── component1.1.dart
+│   │   └── ...
+│   └── ...
+├── services
+│   ├── service1.dart
+│   └── ...
+└── utils
+    ├── constants.dart
+    └── functions
+        ├── shared_function1.dart
+        └── ...
+test
+├── unit
+│   ├── module1
+│   │   └── module1_test.dart
+│   └── ...
+├── integration
+│   ├── module1
+│   │   └── module1_test.dart
+│   └── ...
+└── widget
+    ├── module1
+    │   └── module1_test.dart
+    └── ...
