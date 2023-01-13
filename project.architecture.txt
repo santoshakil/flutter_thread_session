@@ -38,14 +38,14 @@ lib
 │   │   └── components
 │   │       ├── component1
 │   │       │   ├── component1.dart
-│   │       │   ├── component1.1.dart
+│   │       │   ├── component1_1.dart
 │   │       │   └── ...
 │   │       └── ...
 │   └── ...
 ├── components
 │   ├── component1
 │   │   ├── component1.dart
-│   │   ├── component1.1.dart
+│   │   ├── component1_1.dart
 │   │   └── ...
 │   └── ...
 ├── services
