@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart'
-    show Brightness, Colors, ThemeData, VisualDensity;
+import 'package:flutter/material.dart';
 
 ThemeData get darkTheme => ThemeData(
+      visualDensity: VisualDensity.compact,
+      colorSchemeSeed: Colors.teal,
       brightness: Brightness.dark,
-      primarySwatch: Colors.blue,
-      visualDensity: VisualDensity.adaptivePlatformDensity,
+      useMaterial3: true,
     );
