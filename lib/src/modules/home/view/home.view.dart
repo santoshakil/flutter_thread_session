@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../localization/loalization.dart';
-import '../../../theme/themes/themes.dart';
 import '../../router/provider/route.provider.dart';
 import '../../setting/view/setting.view.dart';
 
@@ -14,7 +13,6 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(title: const Text('Home')),
       body: Center(
         child: ElevatedButton(
-          style: roundedButtonStyle,
           onPressed: () async => await fadePush(context, const SettingView()),
           child: Text(t!.setting),
         ),
