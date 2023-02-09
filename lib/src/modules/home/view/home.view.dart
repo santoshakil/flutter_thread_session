@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../localization/loalization.dart';
-import '../../router/provider/route.provider.dart';
+import '../../../extensions/extensions.dart';
 import '../../setting/view/setting.view.dart';
 
 class HomeView extends StatelessWidget {
@@ -10,12 +9,14 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () async => await fadePush(context, const SettingView()),
-          child: Text(t!.setting),
-        ),
+      appBar: AppBar(
+        title: const Text('Home'),
+        actions: [
+          IconButton(
+            onPressed: () async => await context.push(const SettingView()),
+            icon: const Icon(Icons.settings),
+          )
+        ],
       ),
     );
   }

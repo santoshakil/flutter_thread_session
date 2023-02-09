@@ -2,18 +2,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "pattern_m.d",
+      "name": "app.d",
       "request": "launch",
       "type": "dart"
     },
     {
-      "name": "pattern_m.p",
+      "name": "app.p",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
     },
     {
-      "name": "pattern_m.r",
+      "name": "app.r",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"
