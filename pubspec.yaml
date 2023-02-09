@@ -38,3 +38,5 @@ flutter:
 
   assets:
     - assets/images/
+    - data/images/
+    - data/json/
