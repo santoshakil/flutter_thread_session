@@ -14,7 +14,7 @@ class Task1View extends ConsumerWidget {
           children: [
             FilledButton.tonal(
               onPressed: () {},
-              child: const Text('Test Task 1'),
+              child: const Text('Task 1'),
             ),
           ],
         ),
