@@ -1,1 +1,1 @@
-const appName = 'flutter_app';
+const appName = 'flutter_thread_seasion';
