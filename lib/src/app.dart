@@ -4,11 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart'
     show ConsumerWidget, WidgetRef;
 
 import 'constants/constants.dart' show appName;
-import 'localization/loalization.dart'
-    show localizationsDelegates, onGenerateTitle, supportedLocales;
 import 'modules/router/view/router.dart' show AppRouter;
 import 'theme/model/theme.model.dart' show ThemeProfileExtension;
 import 'theme/provider/theme.provider.dart' show themeProvider;
+
+import 'localization/loalization.dart'
+    show localizationsDelegates, onGenerateTitle, supportedLocales;
 
 class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);

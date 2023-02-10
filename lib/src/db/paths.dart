@@ -1,12 +1,15 @@
 import 'dart:io' show Directory;
 
 import 'package:flutter/material.dart' show WidgetsFlutterBinding;
+
 import 'package:path/path.dart' show join;
-import 'package:path_provider/path_provider.dart'
-    show getApplicationDocumentsDirectory;
 
 import '../constants/constants.dart' show appName;
 import '../utils/log/log.dart' show log;
+
+import 'package:path_provider/path_provider.dart'
+    show getApplicationDocumentsDirectory;
+
 
 final appDir = AppDir();
 
