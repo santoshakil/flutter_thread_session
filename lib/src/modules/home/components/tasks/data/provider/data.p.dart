@@ -27,13 +27,15 @@ void _isolate(v) {
   openDBSync();
 
   receivePort.listen((message) {
-    if (message is CSC) {
-      db.writeTxnSync(() => db.cSCs.putSync(message));
-      print('A new csc has been added to the database.');
-    } else if (message is Function) {
-      lock.synchronized(() => message.call());
-    } else {
-      print('Isolate Thread: $message');
-    }
+    lock.synchronized(() {
+      if (message is CSC) {
+        db.writeTxnSync(() => db.cSCs.putSync(message));
+        print('A new csc has been added to the database.');
+      } else if (message is Function) {
+        message.call();
+      } else {
+        print('Isolate Thread: $message');
+      }
+    });
   });
 }
