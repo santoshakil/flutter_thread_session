@@ -11,32 +11,32 @@ enum Tasks {
   compute(
     'Compute',
     'compute is used to perform short-lived heavy task in separate isolate',
-    ComputeView(),
+    ComputeView(key: Key('compute.task.view')),
   ),
   isolate(
     'Isolate',
     'Isolate.spawn is used to perform long-lived heavy task in separate isolate',
-    IsolateView(),
+    IsolateView(key: Key('isolate.task.view')),
   ),
   synchronization(
     'Synchronization',
     'This is used to thread safe data access',
-    SynchronizationView(),
+    SynchronizationView(key: Key('synchronization.task.view')),
   ),
   persistence(
     'Persistence Thread',
     'This is used to perform heavy task in separate isolate, but it always listen to the main isolate for some function call',
-    PersistantView(),
+    PersistantView(key: Key('persistant.task.view')),
   ),
   data(
     'Two way Data Passing',
     'This is used to pass data from main isolate to separate isolate and vice versa',
-    DataView(),
+    DataView(key: Key('data.task.view')),
   ),
   other(
     'Other',
     'Other heavy task example',
-    OtherView(),
+    OtherView(key: Key('other.task.view')),
   );
 
   const Tasks(this.title, this.description, this.view);
