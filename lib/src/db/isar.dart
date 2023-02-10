@@ -17,5 +17,5 @@ Future<void> openDB() async {
   );
 }
 
-void openDBSync(AppDir dir) => db =
-    Isar.openSync(_schema, inspector: !kReleaseMode, directory: dir.db.path);
+void openDBSync([AppDir? dir]) => db =
+    Isar.openSync(_schema, inspector: !kReleaseMode, directory: dir?.db.path);

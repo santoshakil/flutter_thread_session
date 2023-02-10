@@ -1,15 +1,11 @@
 import 'dart:io' show Directory;
 
 import 'package:flutter/material.dart' show WidgetsFlutterBinding;
-
 import 'package:path/path.dart' show join;
-
-import '../constants/constants.dart' show appName;
-import '../utils/log/log.dart' show log;
-
 import 'package:path_provider/path_provider.dart'
     show getApplicationDocumentsDirectory;
 
+import '../constants/constants.dart' show appName;
 
 final appDir = AppDir();
 
@@ -22,7 +18,7 @@ Future<void> initDir() async {
   if (!appDir.root.existsSync()) appDir.root.createSync(recursive: true);
   if (!appDir.db.existsSync()) appDir.db.createSync(recursive: true);
   if (!appDir.backup.existsSync()) appDir.backup.createSync(recursive: true);
-  log.i('App Directory: ${appDir.root.path}');
+  // log.i('App Directory: ${appDir.root.path}');
 }
 
 class AppDir {
