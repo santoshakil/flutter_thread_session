@@ -2,11 +2,21 @@ import 'dart:io';
 import 'dart:isolate';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_thread_seasion/src/modules/home/components/tasks/compute/provider/compute.p.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../../../../db/isar.dart';
 import '../../../../model/csc.m.dart';
+
+Future<void> testIsolate() async {
+  final jsonData = await rootBundle.loadString('data/json/csc.json');
+  final dir = await getApplicationDocumentsDirectory();
+  await Isolate.spawn(
+    heavyTask1,
+    [jsonData, dir.path],
+  );
+}
 
 Future<void> runIsolate() async {
   final token = ServicesBinding.rootIsolateToken!;

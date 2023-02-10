@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../button/task.button.v.dart';
 import '../../../task/model/task.m.dart';
+import '../provider/isolate.p.dart';
 
 class IsolateView extends ConsumerWidget {
   const IsolateView({super.key});
@@ -16,7 +17,7 @@ class IsolateView extends ConsumerWidget {
         TaskButton(
           task: Tasks.isolate,
           onTap: () async {
-            await Future.delayed(const Duration(seconds: 100));
+            await testIsolate();
           },
         ),
         const SizedBox(height: 10),
