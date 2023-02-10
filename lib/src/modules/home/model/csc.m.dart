@@ -1,14 +1,19 @@
 import 'dart:convert';
 
+import 'package:isar/isar.dart';
+
+part 'csc.m.g.dart';
+
 List<CSC> cscFromJson(String str) =>
     List<CSC>.from(json.decode(str).map((x) => CSC.fromJson(x)));
 
 String cscToJson(List<CSC> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+@collection
 class CSC {
   CSC({
-    this.id,
+    this.dataID,
     this.name,
     this.iso3,
     this.iso2,
@@ -31,7 +36,8 @@ class CSC {
     this.states,
   });
 
-  int? id;
+  Id? id;
+  int? dataID;
   String? name;
   String? iso3;
   String? iso2;
@@ -54,7 +60,7 @@ class CSC {
   List<State>? states;
 
   CSC copyWith({
-    int? id,
+    int? dataID,
     String? name,
     String? iso3,
     String? iso2,
@@ -77,7 +83,7 @@ class CSC {
     List<State>? states,
   }) =>
       CSC(
-        id: id ?? this.id,
+        dataID: dataID ?? this.dataID,
         name: name ?? this.name,
         iso3: iso3 ?? this.iso3,
         iso2: iso2 ?? this.iso2,
@@ -105,7 +111,7 @@ class CSC {
   String toRawJson() => json.encode(toJson());
 
   factory CSC.fromJson(Map<String, dynamic> json) => CSC(
-        id: json['id'],
+        dataID: json['id'],
         name: json['name'],
         iso3: json['iso3'],
         iso2: json['iso2'],
@@ -136,7 +142,7 @@ class CSC {
       );
 
   Map<String, dynamic> toJson() => {
-        'id': id,
+        'id': dataID,
         'name': name,
         'iso3': iso3,
         'iso2': iso2,
@@ -164,41 +170,38 @@ class CSC {
       };
 }
 
+@embedded
 class State {
   State({
-    this.id,
+    this.dataID,
     this.name,
     this.stateCode,
     this.latitude,
     this.longitude,
-    this.type,
     this.cities,
   });
 
-  int? id;
+  int? dataID;
   String? name;
   String? stateCode;
   String? latitude;
   String? longitude;
-  dynamic type;
   List<City>? cities;
 
   State copyWith({
-    int? id,
+    int? dataID,
     String? name,
     String? stateCode,
     String? latitude,
     String? longitude,
-    dynamic type,
     List<City>? cities,
   }) =>
       State(
-        id: id ?? this.id,
+        dataID: dataID ?? this.dataID,
         name: name ?? this.name,
         stateCode: stateCode ?? this.stateCode,
         latitude: latitude ?? this.latitude,
         longitude: longitude ?? this.longitude,
-        type: type ?? this.type,
         cities: cities ?? this.cities,
       );
 
@@ -207,51 +210,50 @@ class State {
   String toRawJson() => json.encode(toJson());
 
   factory State.fromJson(Map<String, dynamic> json) => State(
-        id: json['id'],
+        dataID: json['id'],
         name: json['name'],
         stateCode: json['state_code'],
         latitude: json['latitude'],
         longitude: json['longitude'],
-        type: json['type'],
         cities: json['cities'] == null
             ? []
             : List<City>.from(json['cities']!.map((x) => City.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        'id': id,
+        'id': dataID,
         'name': name,
         'state_code': stateCode,
         'latitude': latitude,
         'longitude': longitude,
-        'type': type,
         'cities': cities == null
             ? []
             : List<dynamic>.from(cities!.map((x) => x.toJson())),
       };
 }
 
+@embedded
 class City {
   City({
-    this.id,
+    this.dataID,
     this.name,
     this.latitude,
     this.longitude,
   });
 
-  int? id;
+  int? dataID;
   String? name;
   String? latitude;
   String? longitude;
 
   City copyWith({
-    int? id,
+    int? dataID,
     String? name,
     String? latitude,
     String? longitude,
   }) =>
       City(
-        id: id ?? this.id,
+        dataID: dataID ?? this.dataID,
         name: name ?? this.name,
         latitude: latitude ?? this.latitude,
         longitude: longitude ?? this.longitude,
@@ -262,20 +264,21 @@ class City {
   String toRawJson() => json.encode(toJson());
 
   factory City.fromJson(Map<String, dynamic> json) => City(
-        id: json['id'],
+        dataID: json['id'],
         name: json['name'],
         latitude: json['latitude'],
         longitude: json['longitude'],
       );
 
   Map<String, dynamic> toJson() => {
-        'id': id,
+        'id': dataID,
         'name': name,
         'latitude': latitude,
         'longitude': longitude,
       };
 }
 
+@embedded
 class Timezone {
   Timezone({
     this.zoneName,
@@ -328,6 +331,7 @@ class Timezone {
       };
 }
 
+@embedded
 class Translations {
   Translations({
     this.kr,

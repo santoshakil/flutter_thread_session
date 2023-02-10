@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart' show kReleaseMode;
-
 import 'package:isar/isar.dart' show Isar;
 
+import '../modules/home/model/csc.m.dart' show CSCSchema;
 import '../modules/setting/model/setting.model.dart' show AppSettingSchema;
 import 'paths.dart' show AppDir, appDir, initDir;
 
-const _schema = [AppSettingSchema];
+const _schema = [AppSettingSchema, CSCSchema];
 late final Isar db;
 
 Future<void> openDB() async {

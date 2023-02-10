@@ -23,8 +23,9 @@ class ComputeView extends ConsumerWidget {
           onTap: () async {
             final bytesData = await rootBundle.loadString('data/json/csc.json');
             final csc = cscFromJson(bytesData);
-            final cscNew =
-                csc.map((e) => e.copyWith(id: e.id ?? 250 + 1)).toList();
+            final cscNew = csc
+                .map((e) => e.copyWith(dataID: e.dataID ?? 250 + 1))
+                .toList();
             final dir = await getApplicationDocumentsDirectory();
             final file = File(join(dir.path, 'csc.json'));
             file.writeAsStringSync(cscToJson(cscNew));
