@@ -24,8 +24,11 @@ class TaskButton extends ConsumerWidget {
             : () async {
                 if (onTap == null) return;
                 ref.read(homeTileProvider.notifier).state = task;
-                await onTap!.call();
-                ref.read(homeTileProvider.notifier).state = null;
+                try {
+                  await onTap!.call();
+                } finally {
+                  ref.read(homeTileProvider.notifier).state = null;
+                }
               },
         child: Row(
           mainAxisSize: MainAxisSize.min,
