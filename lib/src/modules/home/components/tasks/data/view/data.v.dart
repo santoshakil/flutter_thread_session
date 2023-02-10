@@ -31,7 +31,17 @@ class DataView extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: ElevatedButton(
+            child: const Text('Send Function to isolate'),
+            onPressed: () => sendPort.send(testFunction),
+          ),
+        ),
+        const SizedBox(height: 10),
       ],
     );
   }
 }
+
+void testFunction() => print('Test function: ${DateTime.now()}');

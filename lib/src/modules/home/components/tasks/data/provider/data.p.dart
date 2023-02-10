@@ -1,11 +1,13 @@
 import 'dart:isolate';
 
 import 'package:flutter_thread_seasion/src/db/isar.dart';
+import 'package:synchronized/synchronized.dart';
 
 import '../../../../model/csc.m.dart';
 
 final receivePort = ReceivePort();
 late SendPort sendPort;
+final lock = Lock();
 
 Future<void> dataSharing() async {
   final isolate = await Isolate.spawn(_isolate, [receivePort.sendPort]);
@@ -28,6 +30,8 @@ void _isolate(v) {
     if (message is CSC) {
       db.writeTxnSync(() => db.cSCs.putSync(message));
       print('A new csc has been added to the database.');
+    } else if (message is Function) {
+      lock.synchronized(() => message.call());
     } else {
       print('Isolate Thread: $message');
     }
