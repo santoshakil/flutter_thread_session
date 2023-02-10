@@ -16,6 +16,7 @@ Future<void> testCompute() async {
 }
 
 Future<void> heavyTask1(List v) async {
+  print(DateTime.now());
   final decoded = cscFromJson(v.first as String);
   final modified =
       decoded.map((e) => e.copyWith(name: e.name?.toUpperCase())).toList();
