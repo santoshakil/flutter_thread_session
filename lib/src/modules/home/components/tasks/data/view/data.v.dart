@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../model/csc.m.dart';
 import '../../../button/task.button.v.dart';
 import '../../../task/model/task.m.dart';
+import '../provider/data.p.dart';
 
 class DataView extends ConsumerWidget {
   const DataView({super.key});
@@ -15,8 +17,18 @@ class DataView extends ConsumerWidget {
         TaskButton(
           task: Tasks.data,
           onTap: () async {
-            await Future.delayed(const Duration(seconds: 100));
+            await dataSharing();
           },
+        ),
+        const SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: ElevatedButton(
+            child: const Text('Send data to isolate'),
+            onPressed: () => sendPort.send(
+              CSC(name: 'CSC ${DateTime.now()}'),
+            ),
+          ),
         ),
         const SizedBox(height: 10),
       ],
