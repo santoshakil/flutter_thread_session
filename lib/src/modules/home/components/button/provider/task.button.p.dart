@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../model/home.m.dart';
+import '../../task/model/task.m.dart';
 
-final homeTileProvider = StateProvider.autoDispose<Threads?>((_) => null);
+final homeTileProvider = StateProvider.autoDispose<Tasks?>((_) => null);

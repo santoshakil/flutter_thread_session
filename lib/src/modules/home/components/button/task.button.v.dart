@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../model/home.m.dart';
+import '../task/model/task.m.dart';
 import 'provider/task.button.p.dart';
 
 class TaskButton extends ConsumerWidget {
   const TaskButton({super.key, required this.thread, this.onTap});
 
   final FutureOr Function()? onTap;
-  final Threads thread;
+  final Tasks thread;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,7 +31,7 @@ class TaskButton extends ConsumerWidget {
           children: [
             running == thread
                 ? Text('Running ${thread.title}')
-                : Text(thread.title),
+                : Text('Run ${thread.title}'),
             if (running == thread) ...[
               const SizedBox(width: 10),
               const SizedBox(
