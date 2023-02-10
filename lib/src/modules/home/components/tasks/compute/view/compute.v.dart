@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../button/task.button.v.dart';
 import '../../../task/model/task.m.dart';
-import '../../isolate/provider/isolate.p.dart';
+import '../provider/compute.p.dart';
 
 class ComputeView extends ConsumerWidget {
   const ComputeView({super.key});
@@ -15,7 +15,10 @@ class ComputeView extends ConsumerWidget {
       children: [
         TaskButton(
           task: Tasks.compute,
-          onTap: () async => await runIsolate(),
+          onTap: () async {
+            testString = 'Hello World';
+            await testCompute();
+          },
         ),
         const SizedBox(height: 10),
       ],
