@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../extensions/extensions.dart';
-import '../../setting/view/setting.view.dart';
 import '../components/task/model/task.m.dart';
 import '../components/task/view/task.v.dart';
 
@@ -15,11 +13,11 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Threading'),
-        actions: [
-          IconButton(
-            onPressed: () async => await context.push(const SettingView()),
-            icon: const Icon(Icons.settings),
-          )
+        actions: const [
+          // IconButton(
+          //   onPressed: () async => await context.push(const SettingView()),
+          //   icon: const Icon(Icons.settings),
+          // ),
         ],
       ),
       body: ListView(
