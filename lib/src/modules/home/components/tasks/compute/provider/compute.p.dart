@@ -12,10 +12,10 @@ String? testString;
 Future<void> testCompute() async {
   final jsonData = await rootBundle.loadString('data/json/csc.json');
   final dir = await getApplicationDocumentsDirectory();
-  await compute(_heavyTask, [jsonData, dir.path]);
+  await compute(heavyTask1, [jsonData, dir.path]);
 }
 
-Future<void> _heavyTask(List v) async {
+Future<void> heavyTask1(List v) async {
   final decoded = cscFromJson(v.first as String);
   final modified =
       decoded.map((e) => e.copyWith(name: e.name?.toUpperCase())).toList();
