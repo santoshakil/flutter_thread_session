@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../themes.dart';
 
 ThemeData get lightTheme => ThemeData(
-      visualDensity: VisualDensity.compact,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
       colorSchemeSeed: Colors.teal,
       brightness: Brightness.light,
       useMaterial3: true,
