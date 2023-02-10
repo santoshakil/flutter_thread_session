@@ -23,6 +23,7 @@ class HomeView extends StatelessWidget {
         ],
       ),
       body: ListView(
+        padding: const EdgeInsets.all(8.0),
         children: [
           for (final thread in Tasks.values)
             _Tile(key: ValueKey(thread), task: thread),
@@ -39,15 +40,12 @@ class _Tile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Card(
-        child: ListTile(
-          title: Text(task.title),
-          subtitle: Text(task.description),
-          trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 18.0),
-          onTap: () async => await context.push(TaskView(task: task)),
-        ),
+    return Card(
+      child: ListTile(
+        title: Text(task.title),
+        subtitle: Text(task.description),
+        trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 18.0),
+        onTap: () async => await context.push(TaskView(task: task)),
       ),
     );
   }

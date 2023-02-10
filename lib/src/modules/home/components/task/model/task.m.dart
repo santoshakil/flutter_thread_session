@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../tasks/compute/view/compute.v.dart';
 import '../../tasks/data/view/data.v.dart';
 import '../../tasks/isolate/view/isolate.v.dart';
+import '../../tasks/other/view/other.v.dart';
 import '../../tasks/persistant/view/persistant.v.dart';
 import '../../tasks/synchronization/view/synchronization.v.dart';
 
@@ -31,6 +32,11 @@ enum Tasks {
     'Two way Data Passing',
     'This is used to pass data from main isolate to separate isolate and vice versa',
     DataView(),
+  ),
+  other(
+    'Other',
+    'Other heavy task example',
+    OtherView(),
   );
 
   const Tasks(this.title, this.description, this.view);
