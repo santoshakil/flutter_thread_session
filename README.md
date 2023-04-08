@@ -1,4 +1,4 @@
-# flutter_thread_seasion
+# flutter_thread_session
 
 A new Flutter project.
 
